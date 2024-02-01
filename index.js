@@ -1,23 +1,3 @@
-// Modify exports directly
-
-// null is primitive
-
-// binary 0 first  check type
-
-// Reassigning exports to a new object
-// exports = { newProperty: 'This will not be exported' };
-// This will be accessible outside the module
-// console.log(module.exports.myProperty);  // 'Hello from exports'
-
-// This will NOT be accessible outside the module
-// console.log(module.exports.newProperty); // undefined
-
-// console.log(this);
-
-// "use strict";
-// this = global
-
-// console.log(globalThis, 'down');
 // OOP
 
 // Object Oriented Programming is a style of programming or programming paradigm centered
@@ -89,9 +69,12 @@ let employee = {
 // refrencing like element.render()
 
 // OBJECTS
+// If object has one or more method we says object has behaviour like a person.
 
 // Object Literals
 // Simple way of defing an object with properties and method
+// An object in JS is a collection of key value pairs
+
 // let circle = {
 //   radius: 1,
 //   direction: {
@@ -103,59 +86,60 @@ let employee = {
 //   },
 // };
 
-// function print() {
-//   var b = (a = 6);
+// Factory Function;
+// return an object inside a function and change the data using paramenters
 
-// return b
+// function createCircle(radius) {
+//   return {
+//     radius,
+//     draw: function () {
+//       console.log("draw");
+//     },
+//   };
 // }
 
-// print();
-// console.log(b);
+// const circle = createCircle(10)
+// circle.draw()
 
-// const tempA = {
-//   title: "Ahmad",
-//   //     funA() {
-//   //     setTimeout(() => {
-//   //       console.log(this, "down");
-//   //     });
-//   //   },
+// Constructor Function
+// Name of the function should be in upercase
 
-//   funA: () => {
-//     setTimeout(() => {
-//       console.log(this, "down");
-//     });
-//   },
-
-//   titopati: {
-//     title: "Mahad",
-//     funB: () => {
-//       const g = this;
-//       setTimeout(() => {
-//         console.log(globalThis, "up");
-//       });
-//     },
-//   },
-// };
-// const obj = new A();
-// const funC = tempA.titopati.funB();
-
-// console.log(tempA.funA());
-
-class MyClass {
-  title = "this is my class";
-  methodA = () => {
-    console.log(this, "first this");
-
-    function methodB() {
-      console.log(this, "second this");
-      setTimeout(() => {
-        console.log(this, "third this");
-      });
-    }
-
-    methodB();
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function () {
+    console.log("draw");
   };
 }
 
-const myInstance = new MyClass();
-myInstance.methodA();
+const anotherCircle = new Circle(10)
+// When we use new operator couple of things happen 
+// {}
+// set this point to empty object (by default this points to the global object)
+// return that object with the attached function
+anotherCircle.draw()
+
+// Constructor Property
+// Every object in JS has property called constructor that refrences function that was
+// used to created that object
+// we can check that using object name dot constructor.
+// when we create an object using object literals internally JS using constructor function
+// for creating the object.
+// We do havc other constructor properties like 
+// new String() ===> '',"",``
+// new Boolean ===> true,false
+// new Number() ===> 1,2,3,4
+// but we dont use that JS uses that for creating these.
+
+
+
+
+// Functions are Objects
+// When we delcare a function using function syntax JS internally uses new Function() 
+// syntax for creating this object and we have methods and properties we use dot notation
+// Call({}, 1,2): used for calling a function first argument is {} and next we can have as many as
+// we want 
+// Apply({}, [1,2]): used for calling a function first argument is {} and next we can have as 
+// many as we want but we have pass that in array 
+// This methods behave same as new operator, if we dont pass {} this will point to window and 
+// same happens with new if we dont pass that.
+
